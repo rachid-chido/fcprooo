@@ -25,12 +25,6 @@ $Resultat = mysqli_query ( $DataBase, $Requete )  or  die(mysqli_error($DataBase
 ?>
 <a href='AfficherFormation.php'>Afficher</a>
 
- 
-echo"<form action='ModifierEnregistrer.php' >\n";
-echo "            <input name=id type=hidden >\n";
-echo " nom:       <input name=nom    type=text  ><br>\n";
-echo " prix:    <input name=prix type=text   ><br>\n";
-echo " <input type=submit value='Modifier' >\n";
-echo "</form>\n";
+
 </body>
 </html>

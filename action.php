@@ -26,7 +26,7 @@ else{ //Sinon le bouton login
          if ($count != 0) // nom d'utilisateur et mot de passe correctes
          {
              $_SESSION['uname'] = $username;
-             header('Location: Dashboard.php');
+             header('Location: /material-dashboard-master/index.html');
              echo "connecter";
  
          } else {

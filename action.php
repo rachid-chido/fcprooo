@@ -8,7 +8,7 @@
   echo '<input type="submit" value="Deconnexion">';
  }
 else{ //Sinon le bouton login
-  echo '<form action="login.html" method="POST" />';
+  echo '<form action="material-dashboard-master/pages/sign-in.html" method="POST" />';
   //ici les autres champs login/pass
   echo '<input type="submit" value="Admin">';
     }
@@ -26,7 +26,7 @@ else{ //Sinon le bouton login
          if ($count != 0) // nom d'utilisateur et mot de passe correctes
          {
              $_SESSION['uname'] = $username;
-             header('Location: /material-dashboard-master/index.html');
+             header('Location: material-dashboard-master/index.html');
              echo "connecter";
  
          } else {
@@ -36,10 +36,10 @@ else{ //Sinon le bouton login
          }
                //header('Location: login.html'); // utilisateur ou mot de passe incorrect
      } else {
-         header('Location: login.html?erreur=2'); // utilisateur ou mot de passe vide
+         header('Location: material-dashboard-master/pages/sign-in.html?erreur=2'); // utilisateur ou mot de passe vide
      }
  } else {
-     header('Location: login.html');
+     header('Location: material-dashboard-master/pages/sign-in.html');
  }
  mysqli_close($con); // fermer la connexion
  

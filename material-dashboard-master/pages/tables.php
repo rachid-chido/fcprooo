@@ -1,17 +1,4 @@
-<!--
-=========================================================
-* Material Dashboard 2 - v3.0.2
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <?php 
 
 $con = mysqli_connect('localhost', 'root', '') or die("erreur ");
@@ -34,7 +21,7 @@ $exec_requete2 = mysqli_query($con, $req2) or die ("erreur");
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title>
-        Material Dashboard 2 by Creative Tim
+        
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -55,7 +42,7 @@ $exec_requete2 = mysqli_query($con, $req2) or die ("erreur");
             <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
                 <img src="../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-1 font-weight-bold text-white">Material Dashboard 2</span>
+                <span class="ms-1 font-weight-bold text-white">CENTRE DE FORMATIONS</span>
             </a>
         </div>
         <hr class="horizontal light mt-0 mb-2">
@@ -74,33 +61,20 @@ $exec_requete2 = mysqli_query($con, $req2) or die ("erreur");
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
-                        <span class="nav-link-text ms-1">Tables</span>
+                        <span class="nav-link-text ms-1">Gestion des formations & personnel</span>
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="../pages/billing.html">
+                    <a class="nav-link text-white active bg-gradient-primary" href="../pages/tables.html">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">receipt_long</i>
+                            <i class="material-icons opacity-10">table_view</i>
                         </div>
-                        <span class="nav-link-text ms-1">Billing</span>
+                        <span class="nav-link-text ms-1">Photos & videos</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="../pages/virtual-reality.html">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">view_in_ar</i>
-                        </div>
-                        <span class="nav-link-text ms-1">Virtual Reality</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="../pages/rtl.html">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
-                        </div>
-                        <span class="nav-link-text ms-1">RTL</span>
-                    </a>
-                </li>
+              
+                
                 <li class="nav-item">
                     <a class="nav-link text-white " href="../pages/notifications.html">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -264,7 +238,9 @@ $exec_requete2 = mysqli_query($con, $req2) or die ("erreur");
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white text-capitalize ps-3">Formateurs</h6>
+                                <h6  class="text-white text-capitalize ps-3">Formateurs</h6>
+                                <h6  class="text-white text-capitalize ps-3"><a href ="#" >Ajouter<i class="fa-solid fa-plus"></i></a></h6>
+
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2">
@@ -276,7 +252,7 @@ $exec_requete2 = mysqli_query($con, $req2) or die ("erreur");
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nom</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Prénom</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mail</th>
-                                            <th class="text-secondary opacity-7"></th>
+                                            <th class="text-secondary opacity-7">Action</th>
                                         </tr>
                                         <?php  while ($for = mysqli_fetch_array($exec_requete)){?>
                                             <tr>
@@ -294,8 +270,10 @@ $exec_requete2 = mysqli_query($con, $req2) or die ("erreur");
                                                 </td>
                                                 <td>
                                                     <span class="action_btn">
-                                                    <a href="ModifierEnregistrer.php">Edit</a>
-                                                    <?php echo "<a href='../../supprimer.php?id=".$for['idp']."'>"?><i class='fa-solid fa-trash-can'></i> remove</a>
+                                                
+
+                                  <button type="button" class="btn btn-primary"><a href="ModifierEnregistrer.php"><a href="ModifierEnregistrer.php">Modifier</a></button>
+                                  <button type="button" class="btn btn-danger"><?php echo "<a href='supprimerf.php?id=".$for['idp']."'>"?><i class='fa-solid fa-trash-can'></i>Supprimer</a></button>
                                                 </td>
                                              </tr>
                                            <?php } ?>
@@ -312,13 +290,16 @@ $exec_requete2 = mysqli_query($con, $req2) or die ("erreur");
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white text-capitalize ps-3">Formations</h6>
+                                <h6 class="text-white text-capitalize ps-3">Liste des Formations</h6>
+                                <h6  class="text-white text-capitalize ps-3"><a href ="#" >Ajouter<i class="fa-solid fa-plus"></i></a></h6>
+ 
                             </div>
                         </div>
-
                         <form class="modal-content animate" action="../../ajouterFormation.php" method="post"></form>
+                        
                         <div class="card-body px-0 pb-2">
                             <div class="table-responsive p-0">
+                                
                                 <table class="table align-items-center justify-content-center mb-0">
                                     <thead>
                                         <tr>
@@ -327,7 +308,8 @@ $exec_requete2 = mysqli_query($con, $req2) or die ("erreur");
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Prix</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nom Formateur</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Prénom Formateur</th>
-                                            <th></th>
+                                            <th class="text-secondary opacity-7">Action</th>
+
 
                                         </tr>
                                         <?php  while ($for = mysqli_fetch_array($exec_requete2)){?>
@@ -351,8 +333,10 @@ $exec_requete2 = mysqli_query($con, $req2) or die ("erreur");
                                                 
                                                 <td>
                                                     <span class="action_btn">
-                                                    <a href="ModifierEnregistrer.php">Edit</a>
-                                                    <?php echo "<a href='supprimer.php?id=".$for['id']."'>"?><i class='fa-solid fa-trash-can'></i> remove</a>
+                                                    <button type="button" class="btn btn-primary"><a href="ModifierEnregistrer.php">Modifier</a></button>
+                                
+                                                   <button type="button" class="btn btn-danger"> <?php echo "<a href='../../supprimer.php?id=".$for['id']."'>"?>
+                                                   <i class='fa-solid fa-trash-can'></i>Supprimer</a></button>
                                                 </td>
                                              </tr>
                                            <?php } ?>

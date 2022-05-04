@@ -1,49 +1,26 @@
-<?php 
- $con = mysqli_connect('localhost', 'root', '') or die("erreur ");
- mysqli_select_db($con, "fcpro") or die("erreur de connexion !! ");
- 
- session_start();
- if (isset($_SESSION['connecte'])){ //S'il est connecté on affiche le bouton logout
-  echo '<form action="index.html" method="POST" />';
-  echo '<input type="submit" value="Deconnexion">';
- }
-else{ //Sinon le bouton login
-  echo '<form action="material-dashboard-master/pages/sign-in.html" method="POST" />';
-  //ici les autres champs login/pass
-  echo '<input type="submit" value="Admin">';
-    }
- if (isset($_POST['uname']) && isset($_POST['psw'])) {
- 
-     $username = mysqli_real_escape_string($con, htmlspecialchars($_POST['uname']));
-     $password = mysqli_real_escape_string($con, htmlspecialchars($_POST['psw']));
- 
-     if ($username !== "" && $password !== "") {
-         $requete = "SELECT count(*) FROM user where
-               Username = '" . $username . "' and Password = md5('" . $password . "') ";
-         $exec_requete = mysqli_query($con, $requete);
-         $reponse = mysqli_fetch_array($exec_requete);
-         $count = $reponse['count(*)'];
-         if ($count != 0) // nom d'utilisateur et mot de passe correctes
-         {
-             $_SESSION['uname'] = $username;
-             header('Location: material-dashboard-master/index.html');
-             echo "connecter";
- 
-         } else {
- 
-             echo '<script>alert("votre identifiant ou votre mot de passe est incorrect ! ")</script>';
-            
-         }
-               //header('Location: login.html'); // utilisateur ou mot de passe incorrect
-     } else {
-         header('Location: material-dashboard-master/pages/sign-in.html?erreur=2'); // utilisateur ou mot de passe vide
-     }
- } else {
-     header('Location: material-dashboard-master/pages/sign-in.html');
- }
- mysqli_close($con); // fermer la connexion
- 
- ?>
+<?php
+$con = mysqli_connect('localhost', 'root', '') or die("erreur ");
+mysqli_select_db($con, "fcpro") or die("erreur de connexion !! ");
+
+session_start();
+
+if (isset($_SESSION['connecte'])) { //S'il est connecté on affiche le bouton logout
+  
+}
+if (isset($_POST['name']) && isset($_POST['pwd'])) {
+     $nom_user = $_POST['name'];
+     $password = $_POST['pwd'];
+
+     $req = "select count(*) from user wher Username = '".$nom_user."' and Password = md5('".$password."')";
+     print("2222");
+     $execute = mysqli_query($con,$req);
+     $res = mysqli_fetch_array($execute);
+     header('location : index.html');
+     
+
+     
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -151,12 +128,12 @@ span.psw {
 }
 
 @-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
+  from {-webkit-transform: scale(0)}
   to {-webkit-transform: scale(1)}
 }
-  
+
 @keyframes animatezoom {
-  from {transform: scale(0)} 
+  from {transform: scale(0)}
   to {transform: scale(1)}
 }
 
@@ -179,31 +156,7 @@ span.psw {
 <!---<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>--->
 
 
-  <form class="modal-content animate" action="action.php" method="post">
-    <div class="imgcontainer">
   
-      <img src="images/avatar.png"  alt="" width="100" height="100">
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Nom utilisateur</b></label>
-      <input type="text" placeholder="Entrez le nom utilisateur" name="uname" required>
-
-      <label for="psw"><b>Mot de passe </b></label>
-      <input type="password" placeholder="Entrez le mot de passe" name="psw" required>
-        
-      <button type="submit">se connecter</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Annuler</button>
-      <span class="psw"> <a href="#">Mot de passe  oublié ?</a></span>
-    </div>
-  </form>
-</div>
 
 <script>
 // Get the modal

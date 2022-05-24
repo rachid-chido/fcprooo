@@ -5,9 +5,9 @@
 </head>
 <body>
 <?php
-    $nom = $_GET["nom"]; 
-    $prix = $_GET["prix"];
-    $idp = $_GET["idp"];
+    $nom = $_POST["nomp"]; 
+    $prix = $_POST["prenom"];
+    $mail = $_POST["mail"];
   
   //--- Connection au SGBDR 
   $DataBase = mysqli_connect ( "localhost" , "root" , "" ) ;
@@ -16,12 +16,12 @@
   mysqli_select_db ( $DataBase, "fcpro" ) ;
 
   //--- Préparation de la requête d'insertion de données
-  $Requete = "INSERT INTO formation (nom, prix, idp) VALUES ('$nom','$prix','$idp')";
+  $Requete = "INSERT INTO formateur (nomp,prenom,mail) VALUES ('$nom','$prenom','$mail')";
   //echo "<hr>" .$Requete. "<hr>";
     
   //--- Exécution de la requête (fin du script possible sur erreur ...)
   $Resultat = mysqli_query ( $DataBase, $Requete )  or  die(mysqli_error($DataBase) ) ;
-  echo '<center>Ajout de la formation <b>'.$nom.'</b> dans la Base de Données !</center>';
+  echo '<center>Ajout du formateur <b>'.$prenom.''.$nom.'</b> dans la Base de Données !</center>';
 
 
   //--- Déconnection de la base de données

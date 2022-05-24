@@ -3,24 +3,37 @@ $con = mysqli_connect('localhost', 'root', '') or die("erreur ");
 mysqli_select_db($con, "fcpro") or die("erreur de connexion !! ");
 
 session_start();
-
-if (isset($_SESSION['connecte'])) { //S'il est connecté on affiche le bouton logout
-  
-}
 if (isset($_POST['name']) && isset($_POST['pwd'])) {
-     $nom_user = $_POST['name'];
-     $password = $_POST['pwd'];
 
-     $req = "select count(*) from user wher Username = '".$nom_user."' and Password = md5('".$password."')";
-     print("2222");
-     $execute = mysqli_query($con,$req);
-     $res = mysqli_fetch_array($execute);
-     header('location : index.html');
-     
+    $username = mysqli_real_escape_string($con, htmlspecialchars($_POST['name']));
+    $password = mysqli_real_escape_string($con, htmlspecialchars($_POST['pwd']));
+    if ($username !== "" && $password !== "") {
+        $requete = "SELECT count(*) FROM user where
+              Username = '" . $username . "' and Password = md5('" . $password . "') ";
+        $exec_requete = mysqli_query($con, $requete);
+        $reponse = mysqli_fetch_array($exec_requete);
+        $count = $reponse['count(*)'];
+        if ($count != 0) // nom d'utilisateur et mot de passe correctes
+        {
+            $_SESSION['name'] = $username;
+            header('Location:material-dashboard-master/index.php');
 
-     
+        } else {
+           
+            echo '<script>alert("votre identifiant ou votre mot de passe est incorrect ! ")</script>';
+        }
+              
+    } else {
+       header('Location:material-dashboard-master/pages/sign-in.html'); // utilisateur ou mot de passe vide
+}    
+
+} else {
+   header('Location:material-dashboard-master/pages/sign-in.html');
+    
 }
+mysqli_close($con); // fermer la connexion
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>

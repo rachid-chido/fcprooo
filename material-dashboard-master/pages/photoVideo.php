@@ -1,19 +1,4 @@
 
-<?php 
-
-$con = mysqli_connect('localhost', 'root', '') or die("erreur ");
-mysqli_select_db($con, "fcpro") or die("erreur de connexion !! ");
-
-$req = "select * from formateur";
-$exec_requete = mysqli_query($con, $req) or die ("erreur");
-$req2 = "SELECT *
-FROM formation f
-INNER JOIN formateur fr ON f.idp = fr.idp
-";
-$exec_requete2 = mysqli_query($con, $req2) or die ("erreur");
-?>
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -49,7 +34,7 @@ $exec_requete2 = mysqli_query($con, $req2) or die ("erreur");
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-white bg-info text-white" href="../pages/dashboard.html">
+                    <a class="nav-link text-white bg-info text-white " href="../pages/dashboard.html">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">dashboard</i>
                         </div>
@@ -76,7 +61,7 @@ $exec_requete2 = mysqli_query($con, $req2) or die ("erreur");
               
            
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="../pages/sign-in.html">
+                    <a class="nav-link text-white bg-info text-white " href="../pages/sign-in.html">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">login</i>
                         </div>
@@ -131,56 +116,34 @@ $exec_requete2 = mysqli_query($con, $req2) or die ("erreur");
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-info text-white shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6  class="text-white text-capitalize ps-3">Formateurs</h6>
-                                <h6  class="text-white text-capitalize ps-3"><a href ="../../ajouterFormateur.php" >Ajouter<i class="fa-solid fa-plus"></i></a></h6>
+                                <h6  class="text-white text-capitalize ps-3">Photos</h6>
+                                <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                <img src="../../images/2.jpg" class="d-block w-100" alt=" ">
+                                <div class="carousel-item">
+                           
+                        
+    
+  </div>
+ 
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+
+  </button>
+</div>
+  
+</div> 
 
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2">
                             <div class="table-responsive p-0">
-                                <table class="table align-items-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nom</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Prénom</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mail</th>
-                                            <th class="text-secondary opacity-7">Action</th>
-                                            <th class="text-secondary opacity-7">Consultation</th>
-                                        </tr>
-                                        <?php  while ($for = mysqli_fetch_array($exec_requete)){?>
-                                            <tr>
-                                                <td>
-                                                    <?php echo ($for['idp']) ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo ($for['nomp']) ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo ($for['prenom']) ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo ($for['mail']) ?>
-                                                </td>
-                                                <td>
-                                                    <span class="action_btn">
-                                                
-
-                                  <button type="button" class="btn btn-secondary"> <?php echo "<a href='ModifierEnregistrerf.php?idp=".$for['idp']."'>"?>Modifier</a></button>
-
-                                        <button type="button" class="btn btn-secondary"> <?php echo "<a href='supprimerf.php?idp=".$for['idp']."'>"?>
-                                        <i class='fa-solid fa-trash-can'></i>Supprimer</a></button>                       
-                                                </td>
-                                                <td>
-                                                    <span class="action_btn">
-                                                    <button type="button" class="btn btn-secondary">  <?php echo "<a href='consulter.php?idp=".$for['idp']."'>"?><i class='fa-solid fa-trash-can'></i>consulter</a></button>
-                                                   
-                                                </td>
-                                             </tr>
-                                           <?php } ?>
-                                    </thead>
-                                   
-                                </table>
+                               
                             </div>
                         </div>
                     </div>
@@ -190,75 +153,19 @@ $exec_requete2 = mysqli_query($con, $req2) or die ("erreur");
                 <div class="col-12">
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                            <div class="bg-info text-white shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white text-capitalize ps-3">Liste des Formations</h6>
-                                <h6  class="text-white text-capitalize ps-3"><a href ="../../ajouterFormation.php" >Ajouter<i class="fa-solid fa-plus"></i></a></h6>
- 
-                            </div>
+                           
                         </div>
-                        <form class="modal-content animate" action="../../ajouterFormation.php" method="post"></form>
                         
-                        <div class="card-body px-0 pb-2">
-                            <div class="table-responsive p-0">
                                 
-                                <table class="table align-items-center justify-content-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nom</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Prix</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nom Formateur</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Prénom Formateur</th>
-                                            <th class="text-secondary opacity-7">Action</th>
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 
-
-                                        </tr>
-                                        <?php  while ($for = mysqli_fetch_array($exec_requete2)){?>
-                                            <tr>
-                                                <td>
-                                                    <?php echo ($for['id']) ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo ($for['nom']) ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo ($for['prix']) ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo ($for['nomp']) ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo ($for['prenom']) ?>
-                                                </td>
-                                                
-                                                
-                                                <td>
-                                                    <span class="action_btn">
-                                                    <button type="button" class="btn btn-secondary"><a href="ModifierEnregistrer.php">Modifier</a></button>
-                                
-                                                   <button type="button" class="btn btn-secondary"> <?php echo "<a href='../../supprimer.php?id=".$for['id']."'>"?>
-                                                   <i class='fa-solid fa-trash-can'></i>Supprimer</a></button>
-                                                   
-                                                </td>
-                                             </tr>
-                                           <?php } ?>
-                                    </thead>
-                                    
-                                </table>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <footer class="footer py-4  ">
-                <div class="container-fluid">
-                    <div class="row align-items-center justify-content-lg-between">
-                        <div class="col-lg-6 mb-lg-0 mb-4">
-                            
-                        </div>
-                       
-                </div>
-            </footer>
+            <form>
+                <input type="file" > Choisir une photo</input>
+            </form>
         </div>
     </main>
     <div class="fixed-plugin">
@@ -357,3 +264,6 @@ $exec_requete2 = mysqli_query($con, $req2) or die ("erreur");
 </body>
 
 </html>
+
+
+
